@@ -4,7 +4,7 @@ Mist is an incredible "Cloud System" with <u><b><i>infinite storage</i></b></u> 
 <ul>
   <li>C++</li>
   <li>C</li>
-</ul><br>
+</ul>
 <b>Technologies:</b>
 <ul>
   <li>Curl</li>
