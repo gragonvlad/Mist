@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1484494470 source:c:\users\admin\documents\qt-workspace\de codeblock\dc\main.cpp
+	<iostream>
+	<fstream>
+	<iostream>
+	<fstream>
+	<iostream>
+	<fstream>
+	<cstring>
+	<iostream>
+	<fstream>
+	<iostream>
+	<fstream>
+	<ctype.h>
+	<iomanip>
+	<stdio.h>
+
