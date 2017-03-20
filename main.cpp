@@ -1,4 +1,4 @@
-
+/*
 //Ouverture simple d'un fchier en Binaire
 #include <iostream>
 #include <fstream>
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
   return 0;
 }
-
+*/
 
 
 /*
@@ -205,3 +205,25 @@ int main(int argc, char *argv[]){
     in.close();
 }
 */
+#include<iostream>
+#include <fstream>
+#include <ctype.h>
+#include <iomanip>
+#include <stdio.h>
+using namespace std;
+
+int main(){
+    string authentificatedvalue="sanix123";
+    cout<<"Welcome to Mist... by S@n1X D4rk3r"<<endl;
+    cout<<">>Authentification(if you don't have one write no):";
+    cin>>authentificatedvalue;
+    if(authentificatedvalue=="no"){ //if the one don't have authentifiacation ID for Mist
+        //We verify first if an ID don't exist
+        cout<<"Create your AuthentificationID!\n >>MistID:";
+        cin>>MistID;
+    }else{
+        //We take the value in the file
+        //We test the ID
+    }
+    return 0;
+}
