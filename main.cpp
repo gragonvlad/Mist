@@ -274,13 +274,16 @@ int main( int argc, char ** argv)
 #include <ctype.h>
 #include <iomanip>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sstream>
 
 #include "sha1.h"
+
 using namespace std;
 
 // Prototypes des methodes
 void welcome();
+void menu();
 string SHA512_encrypt(string value);
 void create_write(string filename, string mot);
 void forward_write(string filename, string mot);
@@ -302,17 +305,24 @@ struct file_descript{ // Structure d'un descripteur de fichier
 };
 
 int main(){
-    string authentificatedvalue="", MistID="";
+    string authentificatedvalue="", MistID="", menuchoice="";
     welcome();
-    //cout<<"Mist loaded..."<<endl;
-    cout<<">>MistID(if you don't have one write no):";
+    //cout<<"Mist loaded..."<<endl; //The load method here to check in files  for all components and network
+    cout<<" >>YourMistID(if you don't have one write no):";
     cin>>authentificatedvalue;
     if(authentificatedvalue=="no"){ //if the one don't have authentifiacation ID for Mist
         //We verify first if an ID don't exist in a file with the SHA1 Crypt ID (l'ordre de cryptage devra etre aleatoire en fonction de chaque creation de son MistID)
+        rewriteYourMistId:
+            cout<<"\nYou need to create your secure MistID first(more than 7 caracters)!\n >>MistID:";
+            cin>>MistID;
+            if(MistID.length()<7){
+                goto rewriteYourMistId;
+            }
+            cout << "Your Generated Key: "<<SHA512_encrypt(MistID)<<endl;
+            cout<<"[Never forget your MistID, it is very important for log in in your files]\n";
+            menu();
+            cout<<" >>Your Choice:";cin>>menuchoice;
 
-        cout<<"\nYou need to create your MistID first!\n>>MistID:";
-        cin>>MistID;
-        cout << SHA512_encrypt(MistID)<<endl;
     }else{
         //We take the value in the file
         //We test the ID
@@ -326,6 +336,18 @@ void welcome(){
     cout<<"\n\t|--------------------------------------------------------------|\n";
     cout<<"\t|-------------------- WelCome to MIST -------------------------|\n";
     cout<<"\t|---------------------------------------------by S@n1X D4rk3r--|\n\n";
+}
+
+//Pour la menu
+void menu(){
+    cout<<"\nMenu:\n";
+    cout<<"1. My Files on Mist\t 2. Storage level\t 3.Upload on Mist\n";
+    cout<<"4. Synchron on Mist\t 5. Mist Storage level\t 6. About\n";
+    cout<<"7. Configurations\t 8. Join the community\n";
+}
+
+void verificationMistID(string val){
+    cout <<"MistID verification for this host....\n";
 }
 
 //For creating the file
