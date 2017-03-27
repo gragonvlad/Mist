@@ -15,21 +15,17 @@
 	<iomanip>
 	<stdio.h>
 
-1490561855 source:c:\users\admin\documents\qt-workspace\de codeblock\mist\mist\main.cpp
+1490654502 source:c:\users\admin\documents\qt-workspace\de codeblock\mist\mist\main.cpp
+	<iostream>
 	<fstream>
 	<ctype.h>
 	<iomanip>
 	<stdio.h>
 	<stdlib.h>
 	<sstream>
+	<string>
 	"sha1.h"
 	"mist.h"
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<malloc.h>
-	<fcntl.h>
-	<io.h>
 
 1490085386 c:\users\admin\documents\qt-workspace\de codeblock\mist\mist\sha1.h
 	<string>
@@ -39,7 +35,7 @@
 	<fstream>
 	"sha1.h"
 
-1490553547 c:\users\admin\documents\qt-workspace\de codeblock\mist\mist\mist.h
+1490654881 c:\users\admin\documents\qt-workspace\de codeblock\mist\mist\mist.h
 	<iostream>
 	<fstream>
 	<iostream>

@@ -4,22 +4,29 @@ using namespace std;
 
 //Pour la bienvenue
 void welcome(){
-    cout<<"\n\t|--------------------------------------------------------------|\n";
-    cout<<"\t|-------------------- WelCome to MIST -------------------------|\n";
-    cout<<"\t|---------------------------------------------by S@n1X D4rk3r--|\n\n";
+    cout<<"\n\t\t   -----------------------------------------\n";
+    cout<<"\t   -------------------- WelCome to MIST ---------------------\n";
+    cout<<"\t\t   ------------------------by S@n1X D4rk3r--\n\n";
 }
 
 //Pour la menu
 void menu(){
-    cout<<"\n|-----------------------------------------------------------------|\n";
+    cout<<"\nHelp Menu:\n--------------------------------------------------------------------\n";
     cout<<" 1. My Files on Mist\t 2. Storage level\t 3.Upload on Mist\n";
     cout<<" 4. Synchron on Mist\t 5. Mist Storage level\t 6. About\n";
-    cout<<" 7. Configurations\t 8. Join the community\t 7.help\n";
-    cout<<"|-----------------------------------------------------------------|\n";
+    cout<<" 7. Configurations\t 8. Join the community\t 9.Commands list\n";
 }
 
-void makeAction(string valuee){
+void ClearScreen() { system("cls"); }
 
+void PauseScreen() { system("PAUSE"); }
+
+void makeAction(string valuee){
+    if(valuee=="help" || valuee=="h"){
+        menu();
+    }else{
+
+    }
 }
 
 void verificationMistID(string val){
@@ -56,7 +63,16 @@ string ToHex(const string& s, bool upper_case)
     return ret.str();
 }
 
-string read_file(string filename){
+string read_file(string file){
+    string STRING;
+	ifstream infile;
+	infile.open(file);
+    getline (infile,STRING); // To get you all the lines.
+	infile.close();
+	return STRING;
+}
+
+string read_file_to_mist(string filename){
     ifstream::pos_type t_size;
     ifstream file_ (filename, ios::in|ios::binary|ios::ate);
     string ligne(""), tohexed("");
@@ -64,9 +80,7 @@ string read_file(string filename){
     if(file_){
         int t_size = file_.tellg();
         memblock = new char [t_size];
-        file_.seekg (0, ios::beg);
-        file_.read (memblock, t_size);
-        file_.close();
+        file_.seekg (0, ios::beg); file_.read (memblock, t_size); file_.close();
         tohexed = ToHex(std::string(memblock, memblock+t_size), true);
         //tohexed = ToHex(memblock, true);
     }else
