@@ -15,7 +15,7 @@ protected:
 public:
     void init();
     void update(const unsigned char *message, unsigned int len);
-    void final(unsigned char *digest);
+    void final(unsigned char *digest);//Concat value from the begin of the statement!
     static const unsigned int DIGEST_SIZE = ( 512 / 8);
 
 protected:

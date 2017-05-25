@@ -34,6 +34,7 @@ int main(){
     begining:
     cout<<" MistID(if you don't have one write no)\n >>";
     cin>>authentificatedvalue;
+    cin.ignore();
     if(authentificatedvalue=="no" || authentificatedvalue=="n" || authentificatedvalue=="NO" || authentificatedvalue=="N"){ //if the one don't have authentifiacation ID for Mist
         //We verify first if an ID don't exist in a file with the SHA1 Crypt ID (l'ordre de cryptage devra etre aleatoire en fonction de chaque creation de son MistID)
         rewriteYourMistId:
@@ -51,19 +52,20 @@ int main(){
 
             cout<<"\n[Never forget your MistID, it is very important for log in in your files]\n";
 
+            MistID=SHA512_encrypt(authentificatedvalue);
             PauseScreen(); ClearScreen(); welcome();
-            cout<< " Welcome 'M"<<SHA512_encrypt(authentificatedvalue).substr (0,7)<<"', (You can type 'help' or h command to see options )\n";
+            cout<< " Welcome 'M_"<<SHA512_encrypt(authentificatedvalue).substr (0,7)<<"', (You can type 'help' or h command to see options )\n";
             cout<<" >>";cin>>menuchoice;
 
-            makeAction(menuchoice);
+            makeAction(menuchoice,MistID);
     }else{
         if(read_file("MistID")==SHA512_encrypt(authentificatedvalue)){
-
+            MistID=SHA512_encrypt(authentificatedvalue); // we put in Mist ID the sha crypt value
             ClearScreen(); welcome();
-            cout<< " Welcome 'M"<<SHA512_encrypt(authentificatedvalue).substr (0,7)<<"', (You can type 'help' or h command to see options )\n";
+            cout<< " Welcome 'M_"<<SHA512_encrypt(authentificatedvalue).substr (0,7)<<"', (You can type 'help' or h command to see options )\n";
             cout<<" >>";cin>>menuchoice;
 
-            makeAction(menuchoice);
+            makeAction(menuchoice, MistID);
         }else{
             cout<<"\n This Mist ID does not exist or does not match that of this host\n";
             goto begining;

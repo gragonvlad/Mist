@@ -12,22 +12,67 @@ void welcome(){
 //Pour la menu
 void menu(){
     cout<<"\nHelp Menu:\n--------------------------------------------------------------------\n";
-    cout<<" 1. My Files on Mist\t 2. Storage level\t 3.Upload on Mist\n";
-    cout<<" 4. Synchron on Mist\t 5. Mist Storage level\t 6. About\n";
-    cout<<" 7. Configurations\t 8. Join the community\t 9.Commands list\n";
+    cout<<" [m ls f (-l or -a)] My Files on Mist\n";
+    cout<<" [m storage] My Storage level\n";
+    cout<<" [m upload 'C:\\Users\\Documents\\Mist.pdf' -d(delete after upload)]\n";
+    cout<<" [m ca ] My Mist Capacity\n";
+    cout<<" [m ? ] About Mist\n";
+    cout<<" [m ? me] About my Mist\n";
+    cout<<" [m conf ] Configurations\n";
+    cout<<" [m join] Join the community\n [m com ls]Commands list\n";
 }
 
 void ClearScreen() { system("cls"); }
 
 void PauseScreen() { system("PAUSE"); }
 
-void makeAction(string valuee){
+void ListFiles(string MistID){
+    cout<<"...";
+}
+
+void makeAction(string valuee, string MistID){
+    string menuchoice;
     if(valuee=="help" || valuee=="h"){
         menu();
+        cout<<" >>";cin>>menuchoice;
+        makeAction(menuchoice, MistID);
     }else{
+        if(valuee=="m ls f"){
+            ClearScreen(); welcome();
+            cout<<"Listing de vos fichiers sur Mist:\n";
+            ListFiles(MistID);
+        }
+        else{
+            cout<<"Unvalable option!\n";
+            cout<<" >>";cin>>menuchoice;
+            makeAction(menuchoice, MistID);
+        }
+        //switch(valuee){
+            //case :
+                //List File on Mist
+
+            //break;
+            //case "2":
+                //Level of storage
+
+            //break;
+            //case "3":
+                //The uploading files (With repertory address)
+
+            //break;
+            //case "4":
+                //Make a synchronisation with an or more directories (With repertory address)
+
+            //break;
+            //case "5":
+
+            //break;
+        //}
 
     }
 }
+
+
 
 void verificationMistID(string val){
     cout <<"MistID verification for this host....\n";
