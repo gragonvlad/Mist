@@ -15,7 +15,7 @@
 	<iomanip>
 	<stdio.h>
 
-1495745844 source:c:\users\admin\documents\qt-workspace\de codeblock\mist\mist\main.cpp
+1495821524 source:c:\users\admin\documents\qt-workspace\de codeblock\mist\mist\main.cpp
 	<iostream>
 	<fstream>
 	<ctype.h>
@@ -35,7 +35,7 @@
 	<fstream>
 	"sha1.h"
 
-1495748884 c:\users\admin\documents\qt-workspace\de codeblock\mist\mist\mist.h
+1495821579 c:\users\admin\documents\qt-workspace\de codeblock\mist\mist\mist.h
 	<iostream>
 	<fstream>
 	<iostream>

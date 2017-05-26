@@ -22,29 +22,39 @@ void menu(){
     cout<<" [m join] Join the community\n [m com ls]Commands list\n";
 }
 
-void ClearScreen() { system("cls"); }
 
+void ClearScreen() { system("cls"); welcome(); }
 void PauseScreen() { system("PAUSE"); }
 
 void ListFiles(string MistID){
     cout<<"...";
 }
 
+void backNewLine(){
+    cout<<"\n >>";
+    //cin.ignore();
+}
+
+
 void makeAction(string valuee, string MistID){
     string menuchoice;
     if(valuee=="help" || valuee=="h"){
-        menu();
-        cout<<" >>";cin>>menuchoice;
+        ClearScreen(); menu();
+        backNewLine();getline(cin,menuchoice);
         makeAction(menuchoice, MistID);
     }else{
         if(valuee=="m ls f"){
-            ClearScreen(); welcome();
-            cout<<"Listing de vos fichiers sur Mist:\n";
+            ClearScreen();
+            cout<<"\n-Listing files for M_"<<MistID.substr(0,7)<<" on Mist:\n";
             ListFiles(MistID);
+
+            backNewLine(); getline(cin,menuchoice);
+            makeAction(menuchoice, MistID);
         }
         else{
-            cout<<"Unvalable option!\n";
-            cout<<" >>";cin>>menuchoice;
+            cout<<"\n-Unvalable option, try again!\n";
+
+            backNewLine(); getline(cin,menuchoice);
             makeAction(menuchoice, MistID);
         }
         //switch(valuee){
@@ -71,8 +81,6 @@ void makeAction(string valuee, string MistID){
 
     }
 }
-
-
 
 void verificationMistID(string val){
     cout <<"MistID verification for this host....\n";
