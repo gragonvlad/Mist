@@ -11,14 +11,14 @@ void welcome(){
 
 //Pour la menu
 void menu(){
-    cout<<"\nHelp Menu:\n--------------------------------------------------------------------\n";
-    cout<<" [m ls f (-l or -a)] My Files on Mist\n";
-    cout<<" [m storage] My Storage level\n";
-    cout<<" [m upload 'C:\\Users\\Documents\\Mist.pdf' -d(delete after upload)]\n";
-    cout<<" [m ca ] My Mist Capacity\n";
-    cout<<" [m ? ] About Mist\n";
+    cout<<"\nMist Help-Menu:\n--------------------------------------------------------------------\n";
+    cout<<" [m files] My Files on Mist\n";
+    cout<<" [m space] Storage and space level in the network\n";
+    cout<<" [m space me] My Storage and space level in the network\n";
+    cout<<" [m upload]\n";
+    cout<<" [m ?] About Mist\n";
     cout<<" [m ? me] About my Mist\n";
-    cout<<" [m conf ] Configurations\n";
+    cout<<" [m conf] Configurations\n";
     cout<<" [m join] Join the community\n [m com ls]Commands list\n";
 }
 
@@ -26,9 +26,31 @@ void menu(){
 void ClearScreen() { system("cls"); welcome(); }
 void PauseScreen() { system("PAUSE"); }
 
-void ListFiles(string MistID){
-    cout<<"...";
-}
+
+/* =============HEARTS FONCTIONS =====================*/
+    void conectionToNetwork(string MistID){
+        cout<<"\n Connection to the peers";
+        string output_string = "................";
+        int length = output_string.length();
+        for ( int ix = 0; ix < length; ix++ )
+        {
+           cout << output_string[ix];
+           Sleep(1100);
+        }
+        cout<<"OK.";
+    }
+
+    void ListFiles(string MistID){
+        conectionToNetwork(MistID);
+        cout<<"\n You have: 0 files";
+    }
+
+    void uploadToMist(string MistID){
+        conectionToNetwork(MistID);
+        cout<<"\n Uploading on going";
+    }
+/*====================================================*/
+
 
 void backNewLine(){
     cout<<"\n >>";
@@ -38,25 +60,46 @@ void backNewLine(){
 
 void makeAction(string valuee, string MistID){
     string menuchoice;
-    if(valuee=="help" || valuee=="h"){
+    if(valuee=="help" || valuee=="h" || valuee=="m"){
         ClearScreen(); menu();
         backNewLine();getline(cin,menuchoice);
         makeAction(menuchoice, MistID);
-    }else{
-        if(valuee=="m ls f"){
-            ClearScreen();
-            cout<<"\n-Listing files for M_"<<MistID.substr(0,7)<<" on Mist:\n";
-            ListFiles(MistID);
+    }
+    else if(valuee.find("files") != string::npos){ // listing files of my MistID
 
-            backNewLine(); getline(cin,menuchoice);
-            makeAction(menuchoice, MistID);
-        }
-        else{
-            cout<<"\n-Unvalable option, try again!\n";
+        ClearScreen();
+        cout<<"\n-Listing files for M_"<<MistID.substr(0,7)<<" on Mist:\n";
+        ListFiles(MistID);
+        backNewLine(); getline(cin,menuchoice);
+        makeAction(menuchoice, MistID);
 
-            backNewLine(); getline(cin,menuchoice);
-            makeAction(menuchoice, MistID);
+    }else if(valuee.find("space") != string::npos){ //wan to see the space capacity
+
+        if(valuee.find("me") != string::npos){ // capacity of MistID
+
+        }else{ //Capacity of Mist
+
         }
+
+    }else if(valuee.find("upload") != string::npos){
+
+        cout <<" Example: File/Repository path=> C:\\Users\\Documents\\Mist.pdf";
+        cout<<"\n File/Repository path=> ";
+        getline(cin,menuchoice);
+        uploadToMist(MistID);
+        backNewLine(); getline(cin,menuchoice);
+        makeAction(menuchoice, MistID);
+
+    }else if(valuee.find("?") != string::npos){
+
+    }else if(valuee.find("conf") != string::npos){
+
+    }
+    else{
+        menu();
+        backNewLine();getline(cin,menuchoice);
+        makeAction(menuchoice, MistID);
+    }
         //switch(valuee){
             //case :
                 //List File on Mist
@@ -78,8 +121,6 @@ void makeAction(string valuee, string MistID){
 
             //break;
         //}
-
-    }
 }
 
 void verificationMistID(string val){
